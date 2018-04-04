@@ -19,10 +19,17 @@ router.get('/json', async (ctx, next) => {
 
 router.post('/auth', async (ctx, next) => {
   try {
-    var token_s = await util.handelToken(ctx.request.body.token_s)
+    var response = await util.handleToken(ctx.request.body.token_s,ctx.request.body.token_l)
     
+    ctx.body = {
+      status: 1,
+      response
+    }
   } catch (error) {
-    
+    ctx.body = {
+      status: 0,
+      error
+    }
   }
 })
 

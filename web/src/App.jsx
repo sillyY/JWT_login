@@ -23,6 +23,9 @@ class App extends Component {
     });
   }
   async handleClick() {
+    //测试使用:情况localstorage
+    // window.localStorage.clear();
+
     var username = this.state.username,
       password = this.state.password;
     //1.取出localstorage中的token
@@ -34,6 +37,10 @@ class App extends Component {
           token_s,
           token_l
         })
+        if(response.data.token_s){
+          //短token过期，重新保存短token
+          window.localStorage.setItem('token_s', response.data.token_s);
+        }
       } catch (error) {
 
       }
