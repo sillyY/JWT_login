@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.block {
+    width: 333px;
+    display: block;
+    margin: 10px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    padding-right: 5px;
+    text-align: right;
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input {
+    height: 20px;
+    vertical-align: middle;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+    color: #fff;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 30px;
+}
