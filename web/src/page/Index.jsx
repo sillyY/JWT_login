@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 
 import * as axios from 'axios';
+
+import '../assets/css/index.css';
 class Index extends Component {
     constructor(props) {
         super(props);
