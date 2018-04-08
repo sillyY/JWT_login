@@ -10,33 +10,43 @@ const findUser = (username, password) => {
                     message: "获取用户信息错误!(PS:读取文件错误!)"
                 })
             }
-            data = JSON.parse(data.toString())
-            if (username !== data.username) {
+
+            //用户筛选
+            var dataArr = JSON.parse(data.toString()),
+            userArr = dataArr.filter( data => data.username === username );
+
+            //用户不存在
+            if (userArr.length === 0) {
                 resolve({
                     status: 2001,
                     message: "用户未注册!"
                 })
-            }
-            if (password !== data.password) {
+            }else{
+                var data = userArr[0];
+                //密码识别
+                if (password !== data.password) {
+                    resolve({
+                        status: 2001,
+                        message: "用户密码错误!"
+                    })
+                }
+    
+                let obj = {
+                    username,
+                    password,
+                }
+                //生成长token：token_l,短token:token_s
+                var token_s = _createToken(obj, 2),
+                    token_l = _createToken(obj, 62);
+    
                 resolve({
-                    status: 2001,
-                    message: "用户密码错误!"
+                    status: 2000,
+                    token:{
+                        token_s,
+                        token_l
+                    }
                 })
             }
-            let obj = {
-                username,
-                password,
-            }
-            var token_s = _createToken(obj, 2),
-                token_l = _createToken(obj, 62);
-            resolve({
-                status: 2000,
-                token:{
-                    token_s,
-                    token_l
-                }
-            })
-
         })
     })
 }
@@ -44,6 +54,8 @@ exports.findUser = findUser;
 
 //token编码解码密码
 const secret = 'lyencode';
+
+//处理token
 const handleToken = async (token_s, token_l) => {
         var decoded_s = jwt.decode(token_s, secret),
             deadline_s = Date.now() + 2 * 24 * 3600 * 1000,
@@ -74,6 +86,7 @@ const handleToken = async (token_s, token_l) => {
                     password:decoded_l.password
                 },
                 token_s=_createToken(obj,2);
+
                let response = await _findUser(decoded_l.username,decoded_l.password);
                return {
                    status:2000,
@@ -119,7 +132,9 @@ const _findUser = (username, password) => {
                     message: "获取用户信息错误!(PS:读取文件错误!)"
                 })
             }
-            resolve(JSON.parse(data.toString()))
+            data=JSON.parse(data.toString());
+            data=data.filter(result=>result.username===username);
+            resolve(data[0]);
         })
     })
 }
