@@ -19,7 +19,7 @@ router.get('/json', async (ctx, next) => {
 
 router.post('/auth', async (ctx, next) => {
   try {
-    var response = await util.handleToken(ctx.request.body.token_s,ctx.request.body.token_l)
+    var response = await util.handleToken(ctx.request.body.token_s, ctx.request.body.token_l)
     ctx.body = {
       status: 1,
       response
@@ -37,7 +37,7 @@ router.post('/login', async (ctx, next) => {
     let userInfo = await util.findUser(ctx.request.body.username, ctx.request.body.password);
     ctx.body = userInfo
   } catch (error) {
-    ctx.body = error
+    ctx.response.error = {...error}
   }
 })
 module.exports = router

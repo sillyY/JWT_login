@@ -6,21 +6,21 @@ const findUser = (username, password) => {
         fs.readFile('../server/secret.json', function (err, data) {
             if (err) {
                 reject({
-                    status: -1,
-                    error: "获取用户信息错误!(PS:读取文件错误!)"
+                    status: 1001,
+                    message: "获取用户信息错误!(PS:读取文件错误!)"
                 })
             }
             data = JSON.parse(data.toString())
             if (username !== data.username) {
-                reject({
-                    status: 0,
-                    error: "用户未注册!"
+                resolve({
+                    status: 2001,
+                    message: "用户未注册!"
                 })
             }
             if (password !== data.password) {
-                reject({
-                    status: 0,
-                    error: "用户密码错误!"
+                resolve({
+                    status: 2001,
+                    message: "用户密码错误!"
                 })
             }
             let obj = {
@@ -30,11 +30,11 @@ const findUser = (username, password) => {
             var token_s = _createToken(obj, 2),
                 token_l = _createToken(obj, 62);
             resolve({
-                status: 1,
-                username,
-                intro: data.intro,
-                token_s,
-                token_l
+                status: 2000,
+                token:{
+                    token_s,
+                    token_l
+                }
             })
 
         })
@@ -54,7 +54,13 @@ const handleToken = async (token_s, token_l) => {
             //通过token中的username和password查询信息
             try {
                 let response = await _findUser(decoded_s.username, decoded_s.password);
-                return response;
+                return {
+                    status:2000,
+                    userInfo:{
+                        username:response.username,
+                        intro:response.intro
+                    }
+                }
             } catch (error) {
                 throw error;
             }
@@ -68,15 +74,24 @@ const handleToken = async (token_s, token_l) => {
                     password:decoded_l.password
                 },
                 token_s=_createToken(obj,2);
-               let response = _findUser(decoded_l.username,decoded_l.password);
-               return response
+               let response = await _findUser(decoded_l.username,decoded_l.password);
+               return {
+                   status:2000,
+                   userInfo:{
+                       username:response.username,
+                       intro:response.intro
+                   },
+                   token:{
+                       token_s
+                   }
+                }
             } catch (error) {
                 throw error;
             }
         }else{
             //长token过期.
             throw {
-                status:0,
+                status:2002,
                 error:"token过期，请重新登陆"
             }
         }
@@ -100,8 +115,8 @@ const _findUser = (username, password) => {
         fs.readFile('../server/secret.json', function(err, data){
             if(err){
                 reject({
-                    status: -1,
-                    error: "获取用户信息错误!(PS:读取文件错误!)"
+                    status: 1001,
+                    message: "获取用户信息错误!(PS:读取文件错误!)"
                 })
             }
             resolve(JSON.parse(data.toString()))
