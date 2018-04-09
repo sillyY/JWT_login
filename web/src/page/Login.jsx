@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from "react-router-dom";
 
 import * as axios from 'axios';
+
+import '../assets/css/login.css';
 class Login extends Component {
 
   constructor(props) {
@@ -64,7 +66,11 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="login">
+      <div className="container">
+      <div className="block title">
+        用户登陆
+      </div>
         <div className="block">
           <label>用户名</label>
           <input
@@ -83,9 +89,10 @@ class Login extends Component {
             placeholder="请输入密码"
             onChange={this.handleChange}/>
         </div>
-        <div className="block center">
-          <button type="submit" onClick={this.handleClick}>注册</button>
+        <div className="block">
+          <button className="blue" type="submit" onClick={this.handleClick}>登陆</button>
         </div>
+      </div>
       </div>
     );
   }

@@ -72,8 +72,14 @@ class Index extends Component {
     render() {
         return (
             <div className="index">
-                <p>hello {this.state.user.username}!</p>
-                <p>{this.state.user.intro}</p>
+                <div className="info">
+                    <p><img src={require("../assets/images/avatar.jpg")} alt=""/></p>
+                    <p className="username">{this.state.user.username}</p>
+                    <p className="intro">{this.state.user.intro}</p>
+                </div>
+                <div className="bottom">
+                    Hello World
+                </div>
             </div>
         )
     }

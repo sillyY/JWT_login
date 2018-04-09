@@ -1,0 +1,87 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    
+}
+.login .container{
+    border: 1px solid #ccc;
+    /* padding: 15px; */
+}
+.login .container .title{
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px dashed #ccc;
+    
+}
+.login .block {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.login .block>label {
+    display: inline-block;
+    margin-right: 10px;
+    width: 50px;
+    font-size: 16px;
+    line-height:16px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #666;
+}
+
+.login .block>input {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+.login .block>button {
+    width: 250px;
+    height: 35px;
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+}
+
+.login .block>button:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+.login .block>button:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+/* Blue button as seen on translate.google.com*/
+.login .block>button.blue {
+    color: white;
+    background: #4C8FFB;
+    border: 1px #3079ED solid;
+    box-shadow: inset 0 1px 0 #80B0FB;
+}
+
+.login .block>button.blue:hover {
+    border: 1px #2F5BB7 solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
+    background: #3F83F1;
+}
+
+.login .block>button.blue:active {
+    box-shadow: inset 0 2px 5px #2370FE;   
+}

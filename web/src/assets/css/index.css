@@ -1,3 +1,53 @@
-.index{
-    
+html,body,#root,.index{
+    height: 100%;
+}
+.index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.index>.info {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+.index>.info>p:first-child {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 120px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.index>.info>p>img {
+    width: 120px;
+    height: 120px;
+    line-height: 0;
+    display: inline-block;
+    border-radius: 50%;
+    transition: linear 0.25s;
+}
+.index>.info>p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.index>.info>.username{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #999;
+}
+.index>.info>.intro{
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+}
+.index>.bottom{
+    position: fixed;
+    bottom: 150px;
+    font-size: 24px;
 }
