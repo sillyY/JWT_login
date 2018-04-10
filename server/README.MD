@@ -17,19 +17,20 @@ npm run start
 ```
 
 ## API
-### toekn认证
+`toekn认证`
 
  | 接口名 | method | 参数1 | 参数2 | 
 | ------| ------ | ------ | ------ | 
 | /auth |  post  | token_s|token_l | 
 
-### 用户登陆
+`用户登陆`
 
  | 接口名 | method | 参数1 | 参数2 | 
 | ------| ------ | ------ | ------ | 
 | /login |  post |username|password| 
 
-
+## web文档
+[Login_Web](https://github.com/sillyY/JWT_login/blob/master/web/README.md)
 
 
 
