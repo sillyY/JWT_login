@@ -4,5 +4,5 @@
 
 ## 相关文档
 * [`Login_Web`](https://github.com/sillyY/JWT_login/blob/master/web/README.md)
-* [`Login_Server`](https://github.com/sillyY/JWT_login/blob/master/server/README.md)
+* [`Login_Server`](https://github.com/sillyY/JWT_login/blob/master/server/README.MD)
 
