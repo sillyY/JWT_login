@@ -15,6 +15,8 @@
 npm install
 npm run start
 ```
+## web文档
+[Login_Web](https://github.com/sillyY/JWT_login/blob/master/web/README.md)
 
 ## API
 `toekn认证`
@@ -29,8 +31,7 @@ npm run start
 | ------| ------ | ------ | ------ | 
 | /login |  post |username|password| 
 
-## web文档
-[Login_Web](https://github.com/sillyY/JWT_login/blob/master/web/README.md)
+
 
 
 
