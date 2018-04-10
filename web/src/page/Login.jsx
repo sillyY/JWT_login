@@ -58,7 +58,6 @@ class Login extends Component {
   }
   async handleClick() {
     //测试使用:情况localstorage window.localStorage.clear();
-
     var username = this.state.username,
       password = this.state.password;
 

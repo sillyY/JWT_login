@@ -23,6 +23,13 @@ class Index extends Component {
         if (token_l && token_s) {
             try {
                 let response = await axios.post('http://localhost:8080/auth', {token_s, token_l})
+                if(response.data.response.status===2002){
+                    window.localStorage.clear();
+                    this
+                    .props
+                    .history
+                    .push('/login');
+                }
                 if (response.data.response.token_s) {
                     //短token过期，长token,重新保存短token 保存短token
                     window
@@ -47,19 +54,7 @@ class Index extends Component {
                 }
             } catch (error) {
                 //短token和长token都过期
-                switch (error.stutas) {
-                    case 1001:
-                        alert('服务器故障,请稍后重试！');
-                        break;
-                    case 1003:
-                        this
-                            .props
-                            .history
-                            .push('/login');
-                        break;
-                    default:
-                        break;
-                }
+                console.log(error);
             }
         } else {
             //不存在token，跳转到登陆输入页面

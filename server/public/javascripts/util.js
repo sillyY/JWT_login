@@ -58,10 +58,10 @@ const secret = 'lyencode';
 //处理token
 const handleToken = async (token_s, token_l) => {
         var decoded_s = jwt.decode(token_s, secret),
-            deadline_s = Date.now() + 2 * 24 * 3600 * 1000,
+            deadline_s = Date.now() 
             decoded_l = jwt.decode(token_l, secret),
-            deadline_l = Date.now() + 62 * 24 * 3600 * 1000;
-        if (deadline_s >= decoded_s.deadline) {
+            deadline_l = Date.now() 
+        if (deadline_s <= decoded_s.deadline) {
             //短token在有效期内
             //通过token中的username和password查询信息
             try {
@@ -78,7 +78,7 @@ const handleToken = async (token_s, token_l) => {
             }
         }
         //短token过期，检验长token是否过期
-        if(deadline_l >= decoded_l.deadline){
+        if(deadline_l <= decoded_l.deadline){
             //长token在有效期内
             try {
                 let obj={
@@ -103,7 +103,7 @@ const handleToken = async (token_s, token_l) => {
             }
         }else{
             //长token过期.
-            throw {
+            return {
                 status:2002,
                 error:"token过期，请重新登陆"
             }
@@ -118,7 +118,7 @@ const _createToken = (payload, day) => {
     //加入过期时间
     payload = {
         ...payload,
-        deadline: Date.now() + day * 24 * 3600 * 1000
+        deadline: Date.now() + day   * 1000
     }
     const token = jwt.encode(payload, secret);
     return token;
